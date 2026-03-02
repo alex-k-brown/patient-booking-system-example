@@ -1,0 +1,43 @@
+{
+  "providers": [
+    { "id": "1", "name": "Dr. Sarah Johnson", "specialty": "Primary Care" },
+    { "id": "2", "name": "Dr. Michael Chen", "specialty": "Cardiology" },
+    { "id": "3", "name": "Dr. Emily Rodriguez", "specialty": "Pediatrics" }
+  ],
+  "appointments": [
+    {
+      "id": "a1",
+      "patientName": "John Smith",
+      "email": "john.smith@example.com",
+      "phone": "555-123-4567",
+      "providerId": "1",
+      "date": "2026-03-10",
+      "time": "09:00",
+      "reason": "Annual physical checkup",
+      "createdAt": "2026-03-01T10:00:00.000Z"
+    },
+    {
+      "id": "a2",
+      "patientName": "Maria Garcia",
+      "email": "maria.garcia@example.com",
+      "phone": "555-987-6543",
+      "providerId": "2",
+      "date": "2026-03-11",
+      "time": "14:00",
+      "reason": "Follow-up for high blood pressure",
+      "createdAt": "2026-03-01T11:30:00.000Z"
+    },
+    {
+      "id": "a3",
+      "patientName": "David Lee",
+      "email": "david.lee@example.com",
+      "phone": "555-456-7890",
+      "providerId": "3",
+      "date": "2026-03-12",
+      "time": "10:00",
+      "reason": "Child wellness visit for 5-year-old",
+      "createdAt": "2026-03-01T14:00:00.000Z"
+    }
+  ],
+  "timeSlots": ["09:00", "10:00", "11:00", "14:00", "15:00", "16:00"]
+}
