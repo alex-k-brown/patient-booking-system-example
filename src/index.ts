@@ -6,7 +6,7 @@ const PORT = 3000;
 app.use(express.json());
 
 app.get("/", (req, res) => {
-  res.send("Patient Booking API");
+  res.send("Patient Booking API!");
 });
 
 app.listen(PORT, () => {
