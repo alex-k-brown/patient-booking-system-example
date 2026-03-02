@@ -1,0 +1,23 @@
+{
+  "name": "patient-booking-system-example",
+  "version": "1.0.0",
+  "description": "Patient appointment booking system example",
+  "homepage": "https://github.com/alex-k-brown/patient-booking-system-example#readme",
+  "bugs": {
+    "url": "https://github.com/alex-k-brown/patient-booking-system-example/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/alex-k-brown/patient-booking-system-example.git"
+  },
+  "license": "MIT",
+  "author": "Alex Brown",
+  "type": "commonjs",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "dependencies": {
+    "express": "^5.2.1"
+  }
+}
