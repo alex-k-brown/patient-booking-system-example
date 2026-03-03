@@ -1,5 +1,5 @@
 import { Router } from "express";
-import { eq } from "drizzle-orm";
+import { eq, and } from "drizzle-orm";
 import { db } from "../db";
 import { appointments, appointmentStatusEnum } from "../db/schema";
 
@@ -8,7 +8,7 @@ const VALID_STATUSES = appointmentStatusEnum.enumValues;
 const router = Router();
 
 router.get("/", async (req, res) => {
-  const { status } = req.query;
+  const { status, providerId } = req.query;
   if (
     status !== undefined &&
     !VALID_STATUSES.includes(status as (typeof VALID_STATUSES)[number])
@@ -24,9 +24,14 @@ router.get("/", async (req, res) => {
       .select()
       .from(appointments)
       .where(
-        status
-          ? eq(appointments.status, status as (typeof VALID_STATUSES)[number])
-          : undefined,
+        and(
+          status
+            ? eq(appointments.status, status as (typeof VALID_STATUSES)[number])
+            : undefined,
+          providerId
+            ? eq(appointments.providerId, providerId as string)
+            : undefined,
+        ),
       );
     res.json(result);
   } catch (err) {
