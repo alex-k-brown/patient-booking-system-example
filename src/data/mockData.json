@@ -4,40 +4,1030 @@
     { "id": "2", "name": "Dr. Michael Chen", "specialty": "Cardiology" },
     { "id": "3", "name": "Dr. Emily Rodriguez", "specialty": "Pediatrics" }
   ],
+  "patients": [
+    {
+      "id": "p1",
+      "name": "John Smith",
+      "email": "john.smith@example.com",
+      "phone": "555-123-4567"
+    },
+    {
+      "id": "p2",
+      "name": "Maria Garcia",
+      "email": "maria.garcia@example.com",
+      "phone": "555-987-6543"
+    },
+    {
+      "id": "p3",
+      "name": "David Lee",
+      "email": "david.lee@example.com",
+      "phone": "555-456-7890"
+    }
+  ],
   "appointments": [
     {
       "id": "a1",
-      "patientName": "John Smith",
-      "email": "john.smith@example.com",
-      "phone": "555-123-4567",
+      "patientId": null,
       "providerId": "1",
-      "date": "2026-03-10",
-      "time": "09:00",
-      "reason": "Annual physical checkup",
-      "createdAt": "2026-03-01T10:00:00.000Z"
+      "datetime": "2026-03-02T09:00:00.000Z",
+      "reason": "",
+      "status": "available",
+      "type": "wellness",
+      "virtual": false
     },
     {
       "id": "a2",
-      "patientName": "Maria Garcia",
-      "email": "maria.garcia@example.com",
-      "phone": "555-987-6543",
+      "patientId": "p1",
       "providerId": "2",
-      "date": "2026-03-11",
-      "time": "14:00",
-      "reason": "Follow-up for high blood pressure",
-      "createdAt": "2026-03-01T11:30:00.000Z"
+      "datetime": "2026-03-02T09:00:00.000Z",
+      "reason": "Fever and sore throat",
+      "status": "scheduled",
+      "type": "sick",
+      "virtual": false
     },
     {
       "id": "a3",
-      "patientName": "David Lee",
-      "email": "david.lee@example.com",
-      "phone": "555-456-7890",
+      "patientId": "p2",
       "providerId": "3",
-      "date": "2026-03-12",
-      "time": "10:00",
-      "reason": "Child wellness visit for 5-year-old",
-      "createdAt": "2026-03-01T14:00:00.000Z"
+      "datetime": "2026-03-02T09:00:00.000Z",
+      "reason": "Follow-up for blood pressure",
+      "status": "completed",
+      "type": "follow-up",
+      "virtual": true
+    },
+    {
+      "id": "a4",
+      "patientId": null,
+      "providerId": "1",
+      "datetime": "2026-03-02T10:00:00.000Z",
+      "reason": "",
+      "status": "available",
+      "type": "sick",
+      "virtual": true
+    },
+    {
+      "id": "a5",
+      "patientId": "p3",
+      "providerId": "2",
+      "datetime": "2026-03-02T10:00:00.000Z",
+      "reason": "Annual physical checkup",
+      "status": "scheduled",
+      "type": "wellness",
+      "virtual": false
+    },
+    {
+      "id": "a6",
+      "patientId": "p1",
+      "providerId": "3",
+      "datetime": "2026-03-02T10:00:00.000Z",
+      "reason": "Routine wellness exam",
+      "status": "completed",
+      "type": "wellness",
+      "virtual": false
+    },
+    {
+      "id": "a7",
+      "patientId": "p2",
+      "providerId": "1",
+      "datetime": "2026-03-02T11:00:00.000Z",
+      "reason": "Follow-up after surgery",
+      "status": "scheduled",
+      "type": "follow-up",
+      "virtual": true
+    },
+    {
+      "id": "a8",
+      "patientId": null,
+      "providerId": "2",
+      "datetime": "2026-03-02T11:00:00.000Z",
+      "reason": "",
+      "status": "available",
+      "type": "wellness",
+      "virtual": false
+    },
+    {
+      "id": "a9",
+      "patientId": "p3",
+      "providerId": "3",
+      "datetime": "2026-03-02T11:00:00.000Z",
+      "reason": "Persistent cough",
+      "status": "completed",
+      "type": "sick",
+      "virtual": false
+    },
+    {
+      "id": "a10",
+      "patientId": null,
+      "providerId": "1",
+      "datetime": "2026-03-02T14:00:00.000Z",
+      "reason": "",
+      "status": "available",
+      "type": "follow-up",
+      "virtual": false
+    },
+    {
+      "id": "a11",
+      "patientId": "p1",
+      "providerId": "2",
+      "datetime": "2026-03-02T14:00:00.000Z",
+      "reason": "Stomach pain",
+      "status": "scheduled",
+      "type": "sick",
+      "virtual": true
+    },
+    {
+      "id": "a12",
+      "patientId": "p2",
+      "providerId": "3",
+      "datetime": "2026-03-02T14:00:00.000Z",
+      "reason": "Preventive care visit",
+      "status": "completed",
+      "type": "wellness",
+      "virtual": false
+    },
+    {
+      "id": "a13",
+      "patientId": null,
+      "providerId": "1",
+      "datetime": "2026-03-02T15:00:00.000Z",
+      "reason": "",
+      "status": "available",
+      "type": "wellness",
+      "virtual": false
+    },
+    {
+      "id": "a14",
+      "patientId": "p3",
+      "providerId": "2",
+      "datetime": "2026-03-02T15:00:00.000Z",
+      "reason": "Medication review",
+      "status": "scheduled",
+      "type": "follow-up",
+      "virtual": false
+    },
+    {
+      "id": "a15",
+      "patientId": null,
+      "providerId": "3",
+      "datetime": "2026-03-02T15:00:00.000Z",
+      "reason": "",
+      "status": "available",
+      "type": "sick",
+      "virtual": true
+    },
+    {
+      "id": "a16",
+      "patientId": "p1",
+      "providerId": "1",
+      "datetime": "2026-03-02T16:00:00.000Z",
+      "reason": "Health maintenance visit",
+      "status": "scheduled",
+      "type": "wellness",
+      "virtual": false
+    },
+    {
+      "id": "a17",
+      "patientId": "p2",
+      "providerId": "2",
+      "datetime": "2026-03-02T16:00:00.000Z",
+      "reason": "Post-procedure check",
+      "status": "completed",
+      "type": "follow-up",
+      "virtual": true
+    },
+    {
+      "id": "a18",
+      "patientId": null,
+      "providerId": "3",
+      "datetime": "2026-03-02T16:00:00.000Z",
+      "reason": "",
+      "status": "available",
+      "type": "wellness",
+      "virtual": false
+    },
+    {
+      "id": "a19",
+      "patientId": "p3",
+      "providerId": "1",
+      "datetime": "2026-03-02T11:00:00.000Z",
+      "reason": "Back pain",
+      "status": "completed",
+      "type": "sick",
+      "virtual": false
+    },
+    {
+      "id": "a20",
+      "patientId": null,
+      "providerId": "2",
+      "datetime": "2026-03-02T14:00:00.000Z",
+      "reason": "",
+      "status": "available",
+      "type": "follow-up",
+      "virtual": true
+    },
+
+    {
+      "id": "a21",
+      "patientId": null,
+      "providerId": "3",
+      "datetime": "2026-03-03T09:00:00.000Z",
+      "reason": "",
+      "status": "available",
+      "type": "wellness",
+      "virtual": false
+    },
+    {
+      "id": "a22",
+      "patientId": "p2",
+      "providerId": "1",
+      "datetime": "2026-03-03T09:00:00.000Z",
+      "reason": "Follow-up for blood pressure",
+      "status": "scheduled",
+      "type": "follow-up",
+      "virtual": true
+    },
+    {
+      "id": "a23",
+      "patientId": "p3",
+      "providerId": "2",
+      "datetime": "2026-03-03T09:00:00.000Z",
+      "reason": "Headache and dizziness",
+      "status": "completed",
+      "type": "sick",
+      "virtual": false
+    },
+    {
+      "id": "a24",
+      "patientId": null,
+      "providerId": "3",
+      "datetime": "2026-03-03T10:00:00.000Z",
+      "reason": "",
+      "status": "available",
+      "type": "sick",
+      "virtual": false
+    },
+    {
+      "id": "a25",
+      "patientId": "p1",
+      "providerId": "1",
+      "datetime": "2026-03-03T10:00:00.000Z",
+      "reason": "Annual physical checkup",
+      "status": "scheduled",
+      "type": "wellness",
+      "virtual": false
+    },
+    {
+      "id": "a26",
+      "patientId": "p2",
+      "providerId": "2",
+      "datetime": "2026-03-03T10:00:00.000Z",
+      "reason": "Follow-up after surgery",
+      "status": "completed",
+      "type": "follow-up",
+      "virtual": true
+    },
+    {
+      "id": "a27",
+      "patientId": "p3",
+      "providerId": "3",
+      "datetime": "2026-03-03T11:00:00.000Z",
+      "reason": "Routine wellness exam",
+      "status": "scheduled",
+      "type": "wellness",
+      "virtual": false
+    },
+    {
+      "id": "a28",
+      "patientId": null,
+      "providerId": "1",
+      "datetime": "2026-03-03T11:00:00.000Z",
+      "reason": "",
+      "status": "available",
+      "type": "follow-up",
+      "virtual": false
+    },
+    {
+      "id": "a29",
+      "patientId": "p1",
+      "providerId": "2",
+      "datetime": "2026-03-03T11:00:00.000Z",
+      "reason": "Preventive care visit",
+      "status": "completed",
+      "type": "wellness",
+      "virtual": false
+    },
+    {
+      "id": "a30",
+      "patientId": null,
+      "providerId": "3",
+      "datetime": "2026-03-03T14:00:00.000Z",
+      "reason": "",
+      "status": "available",
+      "type": "sick",
+      "virtual": true
+    },
+    {
+      "id": "a31",
+      "patientId": "p2",
+      "providerId": "1",
+      "datetime": "2026-03-03T14:00:00.000Z",
+      "reason": "Medication review",
+      "status": "scheduled",
+      "type": "follow-up",
+      "virtual": false
+    },
+    {
+      "id": "a32",
+      "patientId": "p3",
+      "providerId": "2",
+      "datetime": "2026-03-03T14:00:00.000Z",
+      "reason": "Rash and itching",
+      "status": "completed",
+      "type": "sick",
+      "virtual": false
+    },
+    {
+      "id": "a33",
+      "patientId": null,
+      "providerId": "3",
+      "datetime": "2026-03-03T15:00:00.000Z",
+      "reason": "",
+      "status": "available",
+      "type": "wellness",
+      "virtual": false
+    },
+    {
+      "id": "a34",
+      "patientId": "p1",
+      "providerId": "1",
+      "datetime": "2026-03-03T15:00:00.000Z",
+      "reason": "Fever and sore throat",
+      "status": "scheduled",
+      "type": "sick",
+      "virtual": true
+    },
+    {
+      "id": "a35",
+      "patientId": null,
+      "providerId": "2",
+      "datetime": "2026-03-03T15:00:00.000Z",
+      "reason": "",
+      "status": "available",
+      "type": "follow-up",
+      "virtual": false
+    },
+    {
+      "id": "a36",
+      "patientId": "p2",
+      "providerId": "3",
+      "datetime": "2026-03-03T16:00:00.000Z",
+      "reason": "Health maintenance visit",
+      "status": "scheduled",
+      "type": "wellness",
+      "virtual": false
+    },
+    {
+      "id": "a37",
+      "patientId": "p3",
+      "providerId": "1",
+      "datetime": "2026-03-03T16:00:00.000Z",
+      "reason": "Post-procedure check",
+      "status": "completed",
+      "type": "follow-up",
+      "virtual": true
+    },
+    {
+      "id": "a38",
+      "patientId": null,
+      "providerId": "2",
+      "datetime": "2026-03-03T16:00:00.000Z",
+      "reason": "",
+      "status": "available",
+      "type": "sick",
+      "virtual": false
+    },
+    {
+      "id": "a39",
+      "patientId": "p1",
+      "providerId": "3",
+      "datetime": "2026-03-03T09:00:00.000Z",
+      "reason": "Follow-up for blood pressure",
+      "status": "completed",
+      "type": "follow-up",
+      "virtual": false
+    },
+    {
+      "id": "a40",
+      "patientId": null,
+      "providerId": "1",
+      "datetime": "2026-03-03T10:00:00.000Z",
+      "reason": "",
+      "status": "available",
+      "type": "wellness",
+      "virtual": true
+    },
+
+    {
+      "id": "a41",
+      "patientId": null,
+      "providerId": "2",
+      "datetime": "2026-03-04T09:00:00.000Z",
+      "reason": "",
+      "status": "available",
+      "type": "sick",
+      "virtual": false
+    },
+    {
+      "id": "a42",
+      "patientId": "p2",
+      "providerId": "3",
+      "datetime": "2026-03-04T09:00:00.000Z",
+      "reason": "Annual physical checkup",
+      "status": "scheduled",
+      "type": "wellness",
+      "virtual": false
+    },
+    {
+      "id": "a43",
+      "patientId": "p3",
+      "providerId": "1",
+      "datetime": "2026-03-04T09:00:00.000Z",
+      "reason": "Follow-up after surgery",
+      "status": "completed",
+      "type": "follow-up",
+      "virtual": true
+    },
+    {
+      "id": "a44",
+      "patientId": null,
+      "providerId": "2",
+      "datetime": "2026-03-04T10:00:00.000Z",
+      "reason": "",
+      "status": "available",
+      "type": "wellness",
+      "virtual": false
+    },
+    {
+      "id": "a45",
+      "patientId": "p1",
+      "providerId": "3",
+      "datetime": "2026-03-04T10:00:00.000Z",
+      "reason": "Persistent cough",
+      "status": "scheduled",
+      "type": "sick",
+      "virtual": false
+    },
+    {
+      "id": "a46",
+      "patientId": "p2",
+      "providerId": "1",
+      "datetime": "2026-03-04T10:00:00.000Z",
+      "reason": "Routine wellness exam",
+      "status": "completed",
+      "type": "wellness",
+      "virtual": true
+    },
+    {
+      "id": "a47",
+      "patientId": "p3",
+      "providerId": "2",
+      "datetime": "2026-03-04T11:00:00.000Z",
+      "reason": "Medication review",
+      "status": "scheduled",
+      "type": "follow-up",
+      "virtual": false
+    },
+    {
+      "id": "a48",
+      "patientId": null,
+      "providerId": "3",
+      "datetime": "2026-03-04T11:00:00.000Z",
+      "reason": "",
+      "status": "available",
+      "type": "sick",
+      "virtual": false
+    },
+    {
+      "id": "a49",
+      "patientId": "p1",
+      "providerId": "1",
+      "datetime": "2026-03-04T11:00:00.000Z",
+      "reason": "Preventive care visit",
+      "status": "completed",
+      "type": "wellness",
+      "virtual": false
+    },
+    {
+      "id": "a50",
+      "patientId": null,
+      "providerId": "2",
+      "datetime": "2026-03-04T14:00:00.000Z",
+      "reason": "",
+      "status": "available",
+      "type": "follow-up",
+      "virtual": true
+    },
+    {
+      "id": "a51",
+      "patientId": "p2",
+      "providerId": "3",
+      "datetime": "2026-03-04T14:00:00.000Z",
+      "reason": "Health maintenance visit",
+      "status": "scheduled",
+      "type": "wellness",
+      "virtual": false
+    },
+    {
+      "id": "a52",
+      "patientId": "p3",
+      "providerId": "1",
+      "datetime": "2026-03-04T14:00:00.000Z",
+      "reason": "Stomach pain",
+      "status": "completed",
+      "type": "sick",
+      "virtual": false
+    },
+    {
+      "id": "a53",
+      "patientId": null,
+      "providerId": "2",
+      "datetime": "2026-03-04T15:00:00.000Z",
+      "reason": "",
+      "status": "available",
+      "type": "wellness",
+      "virtual": false
+    },
+    {
+      "id": "a54",
+      "patientId": "p1",
+      "providerId": "3",
+      "datetime": "2026-03-04T15:00:00.000Z",
+      "reason": "Post-procedure check",
+      "status": "scheduled",
+      "type": "follow-up",
+      "virtual": true
+    },
+    {
+      "id": "a55",
+      "patientId": null,
+      "providerId": "1",
+      "datetime": "2026-03-04T15:00:00.000Z",
+      "reason": "",
+      "status": "available",
+      "type": "sick",
+      "virtual": false
+    },
+    {
+      "id": "a56",
+      "patientId": "p2",
+      "providerId": "2",
+      "datetime": "2026-03-04T16:00:00.000Z",
+      "reason": "Annual physical checkup",
+      "status": "scheduled",
+      "type": "wellness",
+      "virtual": false
+    },
+    {
+      "id": "a57",
+      "patientId": "p3",
+      "providerId": "3",
+      "datetime": "2026-03-04T16:00:00.000Z",
+      "reason": "Follow-up for blood pressure",
+      "status": "completed",
+      "type": "follow-up",
+      "virtual": true
+    },
+    {
+      "id": "a58",
+      "patientId": null,
+      "providerId": "1",
+      "datetime": "2026-03-04T16:00:00.000Z",
+      "reason": "",
+      "status": "available",
+      "type": "wellness",
+      "virtual": false
+    },
+    {
+      "id": "a59",
+      "patientId": "p1",
+      "providerId": "2",
+      "datetime": "2026-03-04T09:00:00.000Z",
+      "reason": "Back pain",
+      "status": "completed",
+      "type": "sick",
+      "virtual": false
+    },
+    {
+      "id": "a60",
+      "patientId": null,
+      "providerId": "3",
+      "datetime": "2026-03-04T14:00:00.000Z",
+      "reason": "",
+      "status": "available",
+      "type": "follow-up",
+      "virtual": true
+    },
+
+    {
+      "id": "a61",
+      "patientId": null,
+      "providerId": "1",
+      "datetime": "2026-03-05T09:00:00.000Z",
+      "reason": "",
+      "status": "available",
+      "type": "follow-up",
+      "virtual": false
+    },
+    {
+      "id": "a62",
+      "patientId": "p2",
+      "providerId": "2",
+      "datetime": "2026-03-05T09:00:00.000Z",
+      "reason": "Routine wellness exam",
+      "status": "scheduled",
+      "type": "wellness",
+      "virtual": true
+    },
+    {
+      "id": "a63",
+      "patientId": "p3",
+      "providerId": "3",
+      "datetime": "2026-03-05T09:00:00.000Z",
+      "reason": "Rash and itching",
+      "status": "completed",
+      "type": "sick",
+      "virtual": false
+    },
+    {
+      "id": "a64",
+      "patientId": null,
+      "providerId": "1",
+      "datetime": "2026-03-05T10:00:00.000Z",
+      "reason": "",
+      "status": "available",
+      "type": "sick",
+      "virtual": false
+    },
+    {
+      "id": "a65",
+      "patientId": "p1",
+      "providerId": "2",
+      "datetime": "2026-03-05T10:00:00.000Z",
+      "reason": "Medication review",
+      "status": "scheduled",
+      "type": "follow-up",
+      "virtual": false
+    },
+    {
+      "id": "a66",
+      "patientId": "p2",
+      "providerId": "3",
+      "datetime": "2026-03-05T10:00:00.000Z",
+      "reason": "Preventive care visit",
+      "status": "completed",
+      "type": "wellness",
+      "virtual": true
+    },
+    {
+      "id": "a67",
+      "patientId": "p3",
+      "providerId": "1",
+      "datetime": "2026-03-05T11:00:00.000Z",
+      "reason": "Annual physical checkup",
+      "status": "scheduled",
+      "type": "wellness",
+      "virtual": false
+    },
+    {
+      "id": "a68",
+      "patientId": null,
+      "providerId": "2",
+      "datetime": "2026-03-05T11:00:00.000Z",
+      "reason": "",
+      "status": "available",
+      "type": "sick",
+      "virtual": false
+    },
+    {
+      "id": "a69",
+      "patientId": "p1",
+      "providerId": "3",
+      "datetime": "2026-03-05T11:00:00.000Z",
+      "reason": "Post-procedure check",
+      "status": "completed",
+      "type": "follow-up",
+      "virtual": false
+    },
+    {
+      "id": "a70",
+      "patientId": null,
+      "providerId": "1",
+      "datetime": "2026-03-05T14:00:00.000Z",
+      "reason": "",
+      "status": "available",
+      "type": "wellness",
+      "virtual": true
+    },
+    {
+      "id": "a71",
+      "patientId": "p2",
+      "providerId": "2",
+      "datetime": "2026-03-05T14:00:00.000Z",
+      "reason": "Health maintenance visit",
+      "status": "scheduled",
+      "type": "wellness",
+      "virtual": false
+    },
+    {
+      "id": "a72",
+      "patientId": "p3",
+      "providerId": "3",
+      "datetime": "2026-03-05T14:00:00.000Z",
+      "reason": "Headache and dizziness",
+      "status": "completed",
+      "type": "sick",
+      "virtual": false
+    },
+    {
+      "id": "a73",
+      "patientId": null,
+      "providerId": "1",
+      "datetime": "2026-03-05T15:00:00.000Z",
+      "reason": "",
+      "status": "available",
+      "type": "sick",
+      "virtual": false
+    },
+    {
+      "id": "a74",
+      "patientId": "p1",
+      "providerId": "2",
+      "datetime": "2026-03-05T15:00:00.000Z",
+      "reason": "Follow-up after surgery",
+      "status": "scheduled",
+      "type": "follow-up",
+      "virtual": true
+    },
+    {
+      "id": "a75",
+      "patientId": null,
+      "providerId": "3",
+      "datetime": "2026-03-05T15:00:00.000Z",
+      "reason": "",
+      "status": "available",
+      "type": "wellness",
+      "virtual": false
+    },
+    {
+      "id": "a76",
+      "patientId": "p2",
+      "providerId": "1",
+      "datetime": "2026-03-05T16:00:00.000Z",
+      "reason": "Follow-up for blood pressure",
+      "status": "scheduled",
+      "type": "follow-up",
+      "virtual": false
+    },
+    {
+      "id": "a77",
+      "patientId": "p3",
+      "providerId": "2",
+      "datetime": "2026-03-05T16:00:00.000Z",
+      "reason": "Routine wellness exam",
+      "status": "completed",
+      "type": "wellness",
+      "virtual": false
+    },
+    {
+      "id": "a78",
+      "patientId": null,
+      "providerId": "3",
+      "datetime": "2026-03-05T16:00:00.000Z",
+      "reason": "",
+      "status": "available",
+      "type": "follow-up",
+      "virtual": true
+    },
+    {
+      "id": "a79",
+      "patientId": "p1",
+      "providerId": "1",
+      "datetime": "2026-03-05T11:00:00.000Z",
+      "reason": "Fever and sore throat",
+      "status": "completed",
+      "type": "sick",
+      "virtual": false
+    },
+    {
+      "id": "a80",
+      "patientId": null,
+      "providerId": "2",
+      "datetime": "2026-03-05T09:00:00.000Z",
+      "reason": "",
+      "status": "available",
+      "type": "wellness",
+      "virtual": false
+    },
+
+    {
+      "id": "a81",
+      "patientId": null,
+      "providerId": "3",
+      "datetime": "2026-03-06T09:00:00.000Z",
+      "reason": "",
+      "status": "available",
+      "type": "sick",
+      "virtual": false
+    },
+    {
+      "id": "a82",
+      "patientId": "p2",
+      "providerId": "1",
+      "datetime": "2026-03-06T09:00:00.000Z",
+      "reason": "Annual physical checkup",
+      "status": "scheduled",
+      "type": "wellness",
+      "virtual": true
+    },
+    {
+      "id": "a83",
+      "patientId": "p3",
+      "providerId": "2",
+      "datetime": "2026-03-06T09:00:00.000Z",
+      "reason": "Medication review",
+      "status": "completed",
+      "type": "follow-up",
+      "virtual": false
+    },
+    {
+      "id": "a84",
+      "patientId": null,
+      "providerId": "3",
+      "datetime": "2026-03-06T10:00:00.000Z",
+      "reason": "",
+      "status": "available",
+      "type": "wellness",
+      "virtual": false
+    },
+    {
+      "id": "a85",
+      "patientId": "p1",
+      "providerId": "1",
+      "datetime": "2026-03-06T10:00:00.000Z",
+      "reason": "Persistent cough",
+      "status": "scheduled",
+      "type": "sick",
+      "virtual": false
+    },
+    {
+      "id": "a86",
+      "patientId": "p2",
+      "providerId": "2",
+      "datetime": "2026-03-06T10:00:00.000Z",
+      "reason": "Preventive care visit",
+      "status": "completed",
+      "type": "wellness",
+      "virtual": true
+    },
+    {
+      "id": "a87",
+      "patientId": "p3",
+      "providerId": "3",
+      "datetime": "2026-03-06T11:00:00.000Z",
+      "reason": "Post-procedure check",
+      "status": "scheduled",
+      "type": "follow-up",
+      "virtual": false
+    },
+    {
+      "id": "a88",
+      "patientId": null,
+      "providerId": "1",
+      "datetime": "2026-03-06T11:00:00.000Z",
+      "reason": "",
+      "status": "available",
+      "type": "wellness",
+      "virtual": false
+    },
+    {
+      "id": "a89",
+      "patientId": "p1",
+      "providerId": "2",
+      "datetime": "2026-03-06T11:00:00.000Z",
+      "reason": "Stomach pain",
+      "status": "completed",
+      "type": "sick",
+      "virtual": false
+    },
+    {
+      "id": "a90",
+      "patientId": null,
+      "providerId": "3",
+      "datetime": "2026-03-06T14:00:00.000Z",
+      "reason": "",
+      "status": "available",
+      "type": "follow-up",
+      "virtual": true
+    },
+    {
+      "id": "a91",
+      "patientId": "p2",
+      "providerId": "1",
+      "datetime": "2026-03-06T14:00:00.000Z",
+      "reason": "Health maintenance visit",
+      "status": "scheduled",
+      "type": "wellness",
+      "virtual": false
+    },
+    {
+      "id": "a92",
+      "patientId": "p3",
+      "providerId": "2",
+      "datetime": "2026-03-06T14:00:00.000Z",
+      "reason": "Follow-up for blood pressure",
+      "status": "completed",
+      "type": "follow-up",
+      "virtual": false
+    },
+    {
+      "id": "a93",
+      "patientId": null,
+      "providerId": "3",
+      "datetime": "2026-03-06T15:00:00.000Z",
+      "reason": "",
+      "status": "available",
+      "type": "sick",
+      "virtual": false
+    },
+    {
+      "id": "a94",
+      "patientId": "p1",
+      "providerId": "1",
+      "datetime": "2026-03-06T15:00:00.000Z",
+      "reason": "Follow-up after surgery",
+      "status": "scheduled",
+      "type": "follow-up",
+      "virtual": true
+    },
+    {
+      "id": "a95",
+      "patientId": null,
+      "providerId": "2",
+      "datetime": "2026-03-06T15:00:00.000Z",
+      "reason": "",
+      "status": "available",
+      "type": "wellness",
+      "virtual": false
+    },
+    {
+      "id": "a96",
+      "patientId": "p2",
+      "providerId": "3",
+      "datetime": "2026-03-06T16:00:00.000Z",
+      "reason": "Back pain",
+      "status": "scheduled",
+      "type": "sick",
+      "virtual": false
+    },
+    {
+      "id": "a97",
+      "patientId": "p3",
+      "providerId": "1",
+      "datetime": "2026-03-06T16:00:00.000Z",
+      "reason": "Routine wellness exam",
+      "status": "completed",
+      "type": "wellness",
+      "virtual": true
+    },
+    {
+      "id": "a98",
+      "patientId": null,
+      "providerId": "2",
+      "datetime": "2026-03-06T16:00:00.000Z",
+      "reason": "",
+      "status": "available",
+      "type": "follow-up",
+      "virtual": false
+    },
+    {
+      "id": "a99",
+      "patientId": "p1",
+      "providerId": "3",
+      "datetime": "2026-03-06T09:00:00.000Z",
+      "reason": "Headache and dizziness",
+      "status": "completed",
+      "type": "sick",
+      "virtual": false
+    },
+    {
+      "id": "a100",
+      "patientId": null,
+      "providerId": "1",
+      "datetime": "2026-03-06T10:00:00.000Z",
+      "reason": "",
+      "status": "available",
+      "type": "sick",
+      "virtual": true
     }
-  ],
-  "timeSlots": ["09:00", "10:00", "11:00", "14:00", "15:00", "16:00"]
+  ]
 }

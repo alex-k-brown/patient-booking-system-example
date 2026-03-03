@@ -1,13 +1,17 @@
 import { Router } from "express";
-import type { Provider } from "../types";
-import mockData from "../data/mockData.json";
+import { db } from "../db";
+import { providers } from "../db/schema";
 
 const router = Router();
 
-const providers: Provider[] = mockData.providers;
-
-router.get("/", (req, res) => {
-  res.json(providers);
+router.get("/", async (req, res) => {
+  try {
+    const result = await db.select().from(providers);
+    res.json(result);
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ error: "Failed to fetch providers" });
+  }
 });
 
 export default router;

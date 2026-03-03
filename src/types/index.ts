@@ -6,14 +6,20 @@ export interface Provider {
 
 export interface Appointment {
   id: string;
-  patientName: string;
+  patientId: string | null;
+  providerId: string;
+  datetime: Date;
+  reason: string;
+  status: "scheduled" | "completed" | "available";
+  type: "wellness" | "sick" | "follow-up";
+  virtual: boolean;
+}
+
+export interface Patient {
+  id: string;
+  name: string;
   email: string;
   phone: string;
-  providerId: string;
-  date: string; // YYYY-MM-DD
-  time: string; // "09:00", "10:00", etc.
-  reason: string;
-  createdAt: string; // ISO timestamp
 }
 
 export interface CreateAppointmentRequest {
