@@ -21,8 +21,8 @@ export const providers = pgTable("providers", {
 export const patients = pgTable("patients", {
   id: text("id").primaryKey(),
   name: text("name").notNull(),
-  email: text("email").notNull(),
-  phone: text("phone").notNull(),
+  email: text("email").notNull().unique(),
+  phone: text("phone").notNull().unique(),
 });
 
 export const appointments = pgTable("appointments", {

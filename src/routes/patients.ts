@@ -1,5 +1,6 @@
 import { Router } from "express";
 import { eq, ilike, or } from "drizzle-orm";
+import { randomUUID } from "crypto";
 import { db } from "../db";
 import { patients } from "../db/schema";
 
@@ -28,6 +29,54 @@ router.get("/", async (req, res) => {
   } catch (err) {
     console.error(err);
     res.status(500).json({ error: "Failed to fetch patients" });
+  }
+});
+
+router.post("/", async (req, res) => {
+  const { name, email, phone } = req.body;
+
+  const newPatient = {
+    id: randomUUID(),
+    name,
+    email: email.toLowerCase(),
+    phone: phone.replace(/[\s.\-()]/g, ""),
+  };
+
+  try {
+    const result = await db.insert(patients).values(newPatient).returning();
+
+    res.status(201).json(result[0]);
+  } catch (err) {
+    const pgCode =
+      (err as { code?: string }).code ??
+      (err as { cause?: { code?: string } }).cause?.code;
+    if (pgCode === "23505") {
+      res
+        .status(400)
+        .json({ error: "A patient with that email or phone already exists" });
+      return;
+    }
+
+    console.error(err);
+    res.status(500).json({ error: "Failed to create patient" });
+  }
+});
+
+router.delete("/:id", async (req, res) => {
+  try {
+    const deleted = await db
+      .delete(patients)
+      .where(eq(patients.id, req.params.id))
+      .returning();
+
+    if (deleted.length === 0) {
+      res.status(404).json({ error: "Patient not found" });
+      return;
+    }
+    res.status(200).json(deleted[0]);
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ error: "Failed to delete patient" });
   }
 });
 
