@@ -13,7 +13,7 @@ const VALID_TYPES = appointmentTypeEnum.enumValues;
 const router = Router();
 
 router.get("/", async (req, res) => {
-  const { status, type, providerId, virtual } = req.query;
+  const { status, type, virtual, providerId, patientId } = req.query;
   if (
     status !== undefined &&
     !VALID_STATUSES.includes(status as (typeof VALID_STATUSES)[number])
@@ -46,11 +46,14 @@ router.get("/", async (req, res) => {
           type
             ? eq(appointments.type, type as (typeof VALID_TYPES)[number])
             : undefined,
+          virtual !== undefined
+            ? eq(appointments.virtual, virtual === "true")
+            : undefined,
           providerId
             ? eq(appointments.providerId, providerId as string)
             : undefined,
-          virtual !== undefined
-            ? eq(appointments.virtual, virtual === "true")
+          patientId
+            ? eq(appointments.patientId, patientId as string)
             : undefined,
         ),
       );
