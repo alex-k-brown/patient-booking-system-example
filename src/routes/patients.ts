@@ -10,7 +10,7 @@ router.get("/", async (req, res) => {
   const emailLower =
     typeof email === "string" ? email.toLowerCase() : undefined;
   const phoneSanitized =
-    typeof phone === "string" ? phone.replace(/[\s.\-()\s]/g, "") : undefined;
+    typeof phone === "string" ? phone.replace(/[\s.\-()]/g, "") : undefined;
 
   try {
     const result = await db
