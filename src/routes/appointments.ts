@@ -127,4 +127,56 @@ router.patch("/book/:id", async (req, res) => {
   }
 });
 
+router.patch("/cancel/:id", async (req, res) => {
+  const appointment = await db
+    .select()
+    .from(appointments)
+    .where(eq(appointments.id, req.params.id));
+
+  const appointmentTime = appointment[0]?.datetime.getTime();
+  const cancelDeadline = appointmentTime
+    ? appointmentTime - HOURS_BEFORE_BOOKING * 60 * 60 * 1000
+    : undefined;
+
+  if (appointment.length === 0) {
+    res.status(404).json({ error: "Appointment not found" });
+    return;
+  }
+
+  if (appointment[0]?.status !== "scheduled") {
+    res.status(400).json({
+      error: "Only scheduled & uncompleted appointments can be cancelled",
+    });
+    return;
+  }
+
+  if (appointmentTime && cancelDeadline && Date.now() > cancelDeadline) {
+    res.status(409).json({
+      error: `Appointments must be cancelled at least ${HOURS_BEFORE_BOOKING} hours in advance`,
+    });
+    return;
+  }
+
+  try {
+    const updated = await db
+      .update(appointments)
+      .set({
+        patientId: null,
+        status: "available",
+      })
+      .where(eq(appointments.id, req.params.id))
+      .returning();
+
+    if (updated.length === 0) {
+      res.status(404).json({ error: "Appointment not found" });
+      return;
+    }
+
+    res.json(updated[0]);
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ error: "Failed to cancel appointment" });
+  }
+});
+
 export default router;
