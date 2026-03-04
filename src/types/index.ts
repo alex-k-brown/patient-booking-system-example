@@ -4,14 +4,22 @@ export interface Provider {
   specialty: string;
 }
 
+export type AppointmentStatus =
+  | "scheduled"
+  | "completed"
+  | "available"
+  | "selected";
+
+export type AppointmentType = "wellness" | "sick" | "follow-up";
+
 export interface Appointment {
   id: string;
   patientId: string | null;
   providerId: string;
   datetime: Date;
   reason: string;
-  status: "scheduled" | "completed" | "available";
-  type: "wellness" | "sick" | "follow-up";
+  status: AppointmentStatus;
+  type: AppointmentType;
   virtual: boolean;
 }
 

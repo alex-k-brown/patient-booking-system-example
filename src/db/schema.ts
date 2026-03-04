@@ -3,6 +3,7 @@ import { pgTable, text, boolean, timestamp, pgEnum } from "drizzle-orm/pg-core";
 export const appointmentStatusEnum = pgEnum("appointment_status", [
   "scheduled",
   "completed",
+  "selected",
   "available",
 ]);
 
