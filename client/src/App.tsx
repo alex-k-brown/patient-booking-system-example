@@ -3,10 +3,27 @@ import "./App.css";
 import { Card } from "./components/ui/card";
 import { Input } from "./components/ui/input";
 import { useProviders } from "./hooks/useProviders";
+import { useAppointments } from "./hooks/useAppointments";
 
 function App() {
   const [search, setSearch] = useState("");
-  const { data: providers, isLoading, error } = useProviders(search);
+  const {
+    data: providers,
+    isLoading: isProvidersLoading,
+    error: providersError,
+  } = useProviders(search);
+
+  const {
+    grouped: groupedAppointments,
+    data: appointments,
+    isLoading: isAppointmentsLoading,
+    error: appointmentsError,
+  } = useAppointments("available");
+
+  console.log("Appointments:", appointments);
+  console.log("Grouped Appointments:", groupedAppointments);
+  const isLoading = isProvidersLoading || isAppointmentsLoading;
+  const error = providersError || appointmentsError;
 
   return (
     <>
