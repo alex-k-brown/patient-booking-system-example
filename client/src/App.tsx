@@ -26,14 +26,16 @@ function App() {
   return (
     <>
       <div>
-        <h1>Appointment Scheduler</h1>
-        <Input
-          placeholder="Search for doctors or specialties"
-          value={search}
-          onChange={(e) => setSearch(e.target.value)}
-        />
+        <div className="sticky top-0 flex flex-col items-center gap-2 pb-4 bg-white z-10 opacity-95">
+          <h1>Appointment Scheduler</h1>
+          <Input
+            placeholder="Search for doctors or specialties"
+            value={search}
+            onChange={(e) => setSearch(e.target.value)}
+          />
+        </div>
 
-        <div>
+        <div className="flex flex-col gap-4">
           {isLoading && <p>Loading...</p>}
           {error && <p>Error: {error.message}</p>}
           {providers?.map((provider) => (
