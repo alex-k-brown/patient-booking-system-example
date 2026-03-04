@@ -10,7 +10,7 @@ import { Button } from "./ui/button";
 import type { Appointment } from "@/types";
 
 interface AppointmentsTableProps {
-  appointments?: Record<string, Appointment[]>;
+  appointments: Record<string, Appointment[]>;
 }
 
 function AppointmentsTable({ appointments }: AppointmentsTableProps) {
@@ -18,13 +18,9 @@ function AppointmentsTable({ appointments }: AppointmentsTableProps) {
     <Table>
       <TableHeader>
         <TableRow>
-          {appointments ? (
-            Object.keys(appointments).map((day) => (
-              <TableHead key={day}>{day}</TableHead>
-            ))
-          ) : (
-            <TableHead>No available appointments</TableHead>
-          )}
+          {Object.keys(appointments).map((day) => (
+            <TableHead key={day}>{day}</TableHead>
+          ))}
         </TableRow>
       </TableHeader>
       <TableBody>

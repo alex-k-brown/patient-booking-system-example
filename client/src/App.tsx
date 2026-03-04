@@ -19,14 +19,13 @@ function App() {
     error: appointmentsError,
   } = useAppointments("available");
 
-  console.log("Grouped Appointments:", groupedAppointments);
   const isLoading = isProvidersLoading || isAppointmentsLoading;
   const error = providersError || appointmentsError;
 
   return (
     <>
       <div>
-        <div className="sticky top-0 flex flex-col items-center gap-2 pb-4 bg-white z-10 opacity-95">
+        <div className="sticky top-0 flex flex-col items-center gap-2 py-4 bg-background z-10 opacity-95">
           <h1>Appointment Scheduler</h1>
           <Input
             placeholder="Search for doctors or specialties"

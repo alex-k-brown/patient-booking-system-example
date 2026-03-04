@@ -1,4 +1,4 @@
-import { Card } from "./ui/card";
+import { Card, CardContent, CardHeader } from "./ui/card";
 import type { Appointment, Provider } from "@/types";
 import AppointmentsTable from "./appointmentsTable";
 
@@ -9,10 +9,19 @@ interface ProviderCardProps {
 
 function ProviderCard({ provider, appointments }: ProviderCardProps) {
   return (
-    <Card key={provider.id}>
-      <h2>{provider.name}</h2>
-      <h3>{provider.specialty}</h3>
-      <AppointmentsTable appointments={appointments} />
+    <Card>
+      <CardHeader>
+        <h2>{provider.name}</h2>
+        <h3>{provider.specialty}</h3>
+      </CardHeader>
+      <CardContent>
+        {!appointments ||
+        (appointments && Object.keys(appointments).length === 0) ? (
+          <p>No available appointments</p>
+        ) : (
+          <AppointmentsTable appointments={appointments} />
+        )}
+      </CardContent>
     </Card>
   );
 }
