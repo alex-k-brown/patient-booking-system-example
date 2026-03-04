@@ -1,10 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
-
-interface Provider {
-  id: string;
-  name: string;
-  specialty: string;
-}
+import type { Provider } from "@/types";
 
 async function fetchProviders(search: string): Promise<Provider[]> {
   const params = search ? `?search=${encodeURIComponent(search)}` : "";

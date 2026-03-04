@@ -1,31 +1,48 @@
 import { useState } from "react";
 import "./App.css";
-import { Card } from "./components/ui/card";
 import { Input } from "./components/ui/input";
 import { useProviders } from "./hooks/useProviders";
+import { useAppointments } from "./hooks/useAppointments";
+import ProviderCard from "./components/providerCard";
 
 function App() {
   const [search, setSearch] = useState("");
-  const { data: providers, isLoading, error } = useProviders(search);
+  const {
+    data: providers,
+    isLoading: isProvidersLoading,
+    error: providersError,
+  } = useProviders(search);
+
+  const {
+    grouped: groupedAppointments,
+    isLoading: isAppointmentsLoading,
+    error: appointmentsError,
+  } = useAppointments("available");
+
+  const isLoading = isProvidersLoading || isAppointmentsLoading;
+  const error = providersError || appointmentsError;
 
   return (
     <>
       <div>
-        <h1>Appointment Scheduler</h1>
-        <Input
-          placeholder="Search for doctors or specialties"
-          value={search}
-          onChange={(e) => setSearch(e.target.value)}
-        />
+        <div className="sticky top-0 flex flex-col items-center gap-2 py-4 bg-background z-10 opacity-95">
+          <h1>Appointment Scheduler</h1>
+          <Input
+            placeholder="Search for doctors or specialties"
+            value={search}
+            onChange={(e) => setSearch(e.target.value)}
+          />
+        </div>
 
-        <div>
+        <div className="flex flex-col gap-4">
           {isLoading && <p>Loading...</p>}
           {error && <p>Error: {error.message}</p>}
           {providers?.map((provider) => (
-            <Card key={provider.id}>
-              <h2>{provider.name}</h2>
-              <h3>{provider.specialty}</h3>
-            </Card>
+            <ProviderCard
+              key={provider.id}
+              provider={provider}
+              appointments={groupedAppointments?.[provider.id]}
+            />
           ))}
         </div>
       </div>

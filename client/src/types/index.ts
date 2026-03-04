@@ -16,11 +16,12 @@ export interface Appointment {
   id: string;
   patientId: string | null;
   providerId: string;
-  datetime: Date;
+  datetime: string;
   reason: string;
   status: AppointmentStatus;
   type: AppointmentType;
   virtual: boolean;
+  selectedAt?: string;
 }
 
 export interface Patient {
