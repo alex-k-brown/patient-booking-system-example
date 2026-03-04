@@ -116,6 +116,7 @@ router.patch("/select/:id", async (req, res) => {
       .set({
         patientId,
         status: "selected",
+        selectedAt: new Date(),
       })
       .where(eq(appointments.id, req.params.id))
       .returning();
@@ -191,6 +192,7 @@ router.patch("/book/:id", async (req, res) => {
       .set({
         patientId,
         status: "scheduled",
+        selectedAt: null,
       })
       .where(eq(appointments.id, req.params.id))
       .returning();

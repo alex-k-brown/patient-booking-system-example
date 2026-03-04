@@ -37,4 +37,5 @@ export const appointments = pgTable("appointments", {
   status: appointmentStatusEnum("status").notNull(),
   type: appointmentTypeEnum("type").notNull(),
   virtual: boolean("virtual").notNull(),
+  selectedAt: timestamp("selected_at", { withTimezone: true }),
 });

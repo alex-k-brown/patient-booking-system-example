@@ -1,0 +1,1 @@
+ALTER TABLE "appointments" ADD COLUMN "selected_at" timestamp with time zone;
