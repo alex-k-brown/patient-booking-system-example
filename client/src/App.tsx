@@ -1,9 +1,9 @@
 import { useState } from "react";
 import "./App.css";
-import { Card } from "./components/ui/card";
 import { Input } from "./components/ui/input";
 import { useProviders } from "./hooks/useProviders";
 import { useAppointments } from "./hooks/useAppointments";
+import ProviderCard from "./components/providerCard";
 
 function App() {
   const [search, setSearch] = useState("");
@@ -15,12 +15,10 @@ function App() {
 
   const {
     grouped: groupedAppointments,
-    data: appointments,
     isLoading: isAppointmentsLoading,
     error: appointmentsError,
   } = useAppointments("available");
 
-  console.log("Appointments:", appointments);
   console.log("Grouped Appointments:", groupedAppointments);
   const isLoading = isProvidersLoading || isAppointmentsLoading;
   const error = providersError || appointmentsError;
@@ -39,10 +37,11 @@ function App() {
           {isLoading && <p>Loading...</p>}
           {error && <p>Error: {error.message}</p>}
           {providers?.map((provider) => (
-            <Card key={provider.id}>
-              <h2>{provider.name}</h2>
-              <h3>{provider.specialty}</h3>
-            </Card>
+            <ProviderCard
+              key={provider.id}
+              provider={provider}
+              appointments={groupedAppointments?.[provider.id]}
+            />
           ))}
         </div>
       </div>
