@@ -7,7 +7,6 @@ import {
   appointmentTypeEnum,
   patients,
 } from "../db/schema";
-import { error } from "console";
 
 const VALID_STATUSES = appointmentStatusEnum.enumValues;
 const VALID_TYPES = appointmentTypeEnum.enumValues;
@@ -225,9 +224,13 @@ router.patch("/cancel/:id", async (req, res) => {
     return;
   }
 
-  if (appointment[0]?.status !== "scheduled") {
+  if (
+    appointment[0]?.status !== "scheduled" &&
+    appointment[0]?.status !== "selected"
+  ) {
     res.status(400).json({
-      error: "Only scheduled & uncompleted appointments can be cancelled",
+      error:
+        "Only uncompleted scheduled or selected ppointments can be cancelled",
     });
     return;
   }
