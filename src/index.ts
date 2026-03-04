@@ -8,7 +8,7 @@ import { appointments } from "./db/schema";
 import { db } from "./db";
 
 const app = express();
-const PORT = 3000;
+const PORT = process.env["PORT"] ? Number(process.env["PORT"]) : 3000;
 
 app.use(express.json());
 app.use("/api/providers", providersRouter);
@@ -21,15 +21,19 @@ app.get("/", (req, res) => {
 
 setInterval(async () => {
   const cutoff = new Date(Date.now() - 2 * 60 * 1000);
-  await db
-    .update(appointments)
-    .set({ status: "available", selectedAt: null, patientId: null })
-    .where(
-      and(
-        eq(appointments.status, "selected"),
-        lt(appointments.selectedAt, cutoff),
-      ),
-    );
+  try {
+    await db
+      .update(appointments)
+      .set({ status: "available", selectedAt: null, patientId: null })
+      .where(
+        and(
+          eq(appointments.status, "selected"),
+          lt(appointments.selectedAt, cutoff),
+        ),
+      );
+  } catch (err) {
+    console.error("Failed to reset expired selections:", err);
+  }
 }, 30 * 1000);
 
 app.listen(PORT, () => {

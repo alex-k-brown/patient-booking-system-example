@@ -35,6 +35,11 @@ router.get("/", async (req, res) => {
 router.post("/", async (req, res) => {
   const { name, email, phone } = req.body;
 
+  if (!name || !email || !phone) {
+    res.status(400).json({ error: "Name, email, and phone are required" });
+    return;
+  }
+
   const newPatient = {
     id: randomUUID(),
     name,
