@@ -3,6 +3,7 @@ import { pgTable, text, boolean, timestamp, pgEnum } from "drizzle-orm/pg-core";
 export const appointmentStatusEnum = pgEnum("appointment_status", [
   "scheduled",
   "completed",
+  "selected",
   "available",
 ]);
 
@@ -36,4 +37,5 @@ export const appointments = pgTable("appointments", {
   status: appointmentStatusEnum("status").notNull(),
   type: appointmentTypeEnum("type").notNull(),
   virtual: boolean("virtual").notNull(),
+  selectedAt: timestamp("selected_at", { withTimezone: true }),
 });
