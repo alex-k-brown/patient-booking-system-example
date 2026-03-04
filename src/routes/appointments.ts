@@ -1,5 +1,5 @@
 import { Router } from "express";
-import { eq, and } from "drizzle-orm";
+import { eq, and, asc } from "drizzle-orm";
 import { db } from "../db";
 import {
   appointments,
@@ -59,7 +59,8 @@ router.get("/", async (req, res) => {
             ? eq(appointments.patientId, patientId as string)
             : undefined,
         ),
-      );
+      )
+      .orderBy(asc(appointments.providerId), asc(appointments.datetime));
     res.json(result);
   } catch (err) {
     console.error(err);
