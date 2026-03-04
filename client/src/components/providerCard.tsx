@@ -15,8 +15,7 @@ function ProviderCard({ provider, appointments }: ProviderCardProps) {
         <h3>{provider.specialty}</h3>
       </CardHeader>
       <CardContent>
-        {!appointments ||
-        (appointments && Object.keys(appointments).length === 0) ? (
+        {!appointments || Object.keys(appointments).length === 0 ? (
           <p>No available appointments</p>
         ) : (
           <AppointmentsTable appointments={appointments} />
